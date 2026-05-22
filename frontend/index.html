@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopee Cart Architect</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #f5f5f5;
+        }
+
+        .header {
+            background: #ee4d2d;
+            padding: 16px 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .header h1 {
+            color: white;
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .beta {
+            background: white;
+            color: #ee4d2d;
+            font-size: 10px;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: 700;
+        }
+
+        .chat-container {
+            max-width: 480px;
+            margin: 0 auto;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .user-bubble {
+            background: white;
+            border-radius: 12px;
+            padding: 14px 16px;
+            margin-bottom: 16px;
+            font-size: 14px;
+            color: #333;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .cart-card {
+            background: white;
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 16px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            display: none;
+        }
+
+        .cart-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 4px;
+        }
+
+        .cart-subtitle {
+            font-size: 12px;
+            color: #999;
+            margin-bottom: 8px;
+        }
+
+        .cart-total {
+            font-size: 14px;
+            color: #ee4d2d;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .cart-item {
+            display: flex;
+            gap: 12px;
+            padding: 12px 0;
+            border-top: 1px solid #f0f0f0;
+            align-items: flex-start;
+        }
+
+        .item-emoji {
+            font-size: 32px;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #fff5f5;
+            border-radius: 8px;
+            flex-shrink: 0;
+        }
+
+        .item-details { flex: 1; }
+
+        .item-name {
+            font-size: 13px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 2px;
+        }
+
+        .item-price {
+            font-size: 13px;
+            color: #ee4d2d;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .item-reason {
+            font-size: 11px;
+            color: #999;
+            line-height: 1.4;
+        }
+
+        .refine-section {
+            margin-bottom: 16px;
+            display: none;
+        }
+
+        .refine-title {
+            font-size: 13px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 8px;
+        }
+
+        .refine-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 10px;
+        }
+
+        .refine-btn {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            padding: 6px 12px;
+            font-size: 12px;
+            cursor: pointer;
+            color: #333;
+        }
+
+        .refine-btn:hover { border-color: #ee4d2d; color: #ee4d2d; }
+
+        .input-row {
+            display: flex;
+            gap: 8px;
+        }
+
+        .text-input {
+            flex: 1;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            padding: 10px 16px;
+            font-size: 13px;
+            outline: none;
+        }
+
+        .text-input:focus { border-color: #ee4d2d; }
+
+        .send-btn {
+            background: #ee4d2d;
+            color: white;
+            border: none;
+            border-radius: 20px;
+            padding: 10px 16px;
+            font-size: 13px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .checkout-btn {
+            width: 100%;
+            background: #ee4d2d;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 14px;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            margin-top: 16px;
+            display: none;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 20px;
+            color: #999;
+            font-size: 14px;
+            display: none;
+        }
+
+        .situation-input {
+            background: white;
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 16px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .situation-input textarea {
+            width: 100%;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 10px;
+            font-size: 13px;
+            resize: none;
+            height: 80px;
+            outline: none;
+            font-family: inherit;
+        }
+
+        .situation-input textarea:focus { border-color: #ee4d2d; }
+
+        .generate-btn {
+            width: 100%;
+            background: #ee4d2d;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 12px;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>Shopee Cart Architect</h1>
+    <span class="beta">BETA</span>
+</div>
+
+<div class="chat-container">
+
+    <!-- Situation Input -->
+    <div class="situation-input">
+        <textarea id="situationInput" placeholder="Describe your situation... e.g. 'Organising a team bonding day for 12 people, red team, budget $30/person, need matching items that aren't CNY stuff'"></textarea>
+        <button class="generate-btn" onclick="generateCart()">Build My Cart</button>
+    </div>
+
+    <!-- User bubble showing their input -->
+    <div class="user-bubble" id="userBubble" style="display:none"></div>
+
+    <!-- Loading -->
+    <div class="loading" id="loading">Building your cart...</div>
+
+    <!-- Cart Card -->
+    <div class="cart-card" id="cartCard">
+        <div class="cart-title" id="cartTitle"></div>
+        <div class="cart-subtitle">Organised into a complete, ready-to-checkout cart.</div>
+        <div class="cart-total" id="cartTotal"></div>
+        <div id="cartItems"></div>
+    </div>
+
+    <!-- Refine Section -->
+    <div class="refine-section" id="refineSection">
+        <div class="refine-title">Refine This Cart:</div>
+        <div class="refine-buttons">
+            <button class="refine-btn" onclick="refine('Make it more sporty')">Make it more sporty</button>
+            <button class="refine-btn" onclick="refine('Find something cheaper')">Find something cheaper</button>
+            <button class="refine-btn" onclick="refine('Change number of people')">Change number of people</button>
+            <button class="refine-btn" onclick="reset()">Start Over</button>
+        </div>
+        <div class="input-row">
+            <input class="text-input" id="refineInput" placeholder="Tell me how to adjust..."/>
+            <button class="send-btn" onclick="refineCustom()">Send</button>
+        </div>
+    </div>
+
+    <!-- Checkout Button -->
+    <button class="checkout-btn" id="checkoutBtn">CHECKOUT THIS SOLUTION</button>
+
+</div>
+
+<script>
+    let currentSituation = '';
+
+    const itemEmojis = {
+        'clothing': '👕',
+        'accessories': '🧢',
+        'drinkware': '🍶',
+        'party': '🎉',
+        'default': '🛍️'
+    };
+
+    async function generateCart() {
+        const situation = document.getElementById('situationInput').value.trim();
+        if (!situation) return;
+
+        currentSituation = situation;
+        document.getElementById('userBubble').textContent = situation;
+        document.getElementById('userBubble').style.display = 'block';
+        document.getElementById('loading').style.display = 'block';
+        document.getElementById('cartCard').style.display = 'none';
+        document.getElementById('refineSection').style.display = 'none';
+        document.getElementById('checkoutBtn').style.display = 'none';
+
+        try {
+            const response = await fetch('http://127.0.0.1:8000/generate-cart', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ situation })
+            });
+
+            const cart = await response.json();
+            displayCart(cart);
+        } catch (error) {
+            document.getElementById('loading').textContent = 'Something went wrong. Please try again.';
+        }
+    }
+
+    function displayCart(cart) {
+        document.getElementById('loading').style.display = 'none';
+        document.getElementById('cartTitle').textContent = cart.cart_name;
+        document.getElementById('cartTotal').textContent = 
+            `Total: $${cart.total_cost} (Avg. $${cart.cost_per_person}/person)`;
+
+        let itemsHTML = '';
+        cart.items.forEach(item => {
+            const emoji = itemEmojis[item.category] || itemEmojis['default'];
+            itemsHTML += `
+                <div class="cart-item">
+                    <div class="item-emoji">${emoji}</div>
+                    <div class="item-details">
+                        <div class="item-name">${item.name}</div>
+                        <div class="item-price">$${item.subtotal.toFixed(2)} ($${item.unit_price}/unit)</div>
+                        <div class="item-reason">💬 ${item.reason}</div>
+                    </div>
+                </div>
+            `;
+        });
+
+        document.getElementById('cartItems').innerHTML = itemsHTML;
+        document.getElementById('cartCard').style.display = 'block';
+        document.getElementById('refineSection').style.display = 'block';
+        document.getElementById('checkoutBtn').style.display = 'block';
+        document.getElementById('checkoutBtn').textContent = 
+            `CHECKOUT THIS SOLUTION (${cart.items.reduce((a, b) => a + b.quantity, 0) * (cart.items[0]?.quantity || 1)} Items)`;
+    }
+
+    async function refine(instruction) {
+        const newSituation = currentSituation + '. ' + instruction;
+        document.getElementById('situationInput').value = newSituation;
+        currentSituation = newSituation;
+        await generateCart();
+    }
+
+    async function refineCustom() {
+        const input = document.getElementById('refineInput').value.trim();
+        if (!input) return;
+        document.getElementById('refineInput').value = '';
+        await refine(input);
+    }
+
+    function reset() {
+        document.getElementById('situationInput').value = '';
+        document.getElementById('userBubble').style.display = 'none';
+        document.getElementById('cartCard').style.display = 'none';
+        document.getElementById('refineSection').style.display = 'none';
+        document.getElementById('checkoutBtn').style.display = 'none';
+        document.getElementById('loading').style.display = 'none';
+        currentSituation = '';
+    }
+</script>
+
+</body>
+</html>

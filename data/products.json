@@ -1,0 +1,167 @@
+[
+  {
+    "id": "001",
+    "name": "Red Dry-Fit Sports T-Shirt (Pack of 12)",
+    "category": "clothing",
+    "price": 10.00,
+    "min_order": 1,
+    "rating": 4.8,
+    "shipping_days": 2,
+    "stock": 50,
+    "tags": ["red", "sporty", "unisex", "clothing"]
+  },
+  {
+    "id": "002",
+    "name": "Matching Red Trucker Caps (Pack of 12)",
+    "category": "accessories",
+    "price": 5.00,
+    "min_order": 1,
+    "rating": 4.6,
+    "shipping_days": 2,
+    "stock": 30,
+    "tags": ["red", "sporty", "accessories"]
+  },
+  {
+    "id": "003",
+    "name": "Insulated Red Sports Water Bottles (12 Units)",
+    "category": "drinkware",
+    "price": 12.00,
+    "min_order": 1,
+    "rating": 4.7,
+    "shipping_days": 3,
+    "stock": 40,
+    "tags": ["red", "sporty", "drinkware"]
+  },
+  {
+    "id": "004",
+    "name": "Red Foam Spirit Fingers (Pack of 12)",
+    "category": "party",
+    "price": 3.00,
+    "min_order": 1,
+    "rating": 4.5,
+    "shipping_days": 1,
+    "stock": 100,
+    "tags": ["red", "party", "fun"]
+  },
+  {
+    "id": "005",
+    "name": "Birthday Balloon Bundle (50 pieces)",
+    "category": "party",
+    "price": 8.00,
+    "min_order": 1,
+    "rating": 4.6,
+    "shipping_days": 1,
+    "stock": 150,
+    "tags": ["birthday", "party", "colorful", "fun"]
+  },
+  {
+    "id": "006",
+    "name": "Birthday Cake Candles Set",
+    "category": "party",
+    "price": 4.00,
+    "min_order": 1,
+    "rating": 4.7,
+    "shipping_days": 1,
+    "stock": 200,
+    "tags": ["birthday", "party", "candles"]
+  },
+  {
+    "id": "007",
+    "name": "Disposable Party Plates and Cups Set (50 pcs)",
+    "category": "party",
+    "price": 6.00,
+    "min_order": 1,
+    "rating": 4.3,
+    "shipping_days": 2,
+    "stock": 200,
+    "tags": ["birthday", "party", "disposable"]
+  },
+  {
+    "id": "008",
+    "name": "Happy Birthday Banner and Decorations Kit",
+    "category": "decorations",
+    "price": 9.00,
+    "min_order": 1,
+    "rating": 4.8,
+    "shipping_days": 1,
+    "stock": 100,
+    "tags": ["birthday", "party", "decorations"]
+  },
+  {
+    "id": "009",
+    "name": "Party Favour Goodie Bags (Pack of 20)",
+    "category": "party",
+    "price": 12.00,
+    "min_order": 1,
+    "rating": 4.5,
+    "shipping_days": 2,
+    "stock": 80,
+    "tags": ["birthday", "party", "gifts", "fun"]
+  },
+  {
+    "id": "010",
+    "name": "Reusable Tote Bags (Pack of 10)",
+    "category": "accessories",
+    "price": 6.00,
+    "min_order": 1,
+    "rating": 4.4,
+    "shipping_days": 3,
+    "stock": 60,
+    "tags": ["neutral", "practical", "accessories"]
+  },
+  {
+    "id": "011",
+    "name": "Blue Team Jersey (Pack of 12)",
+    "category": "clothing",
+    "price": 11.00,
+    "min_order": 1,
+    "rating": 4.7,
+    "shipping_days": 2,
+    "stock": 40,
+    "tags": ["blue", "sporty", "unisex", "clothing"]
+  },
+  {
+    "id": "012",
+    "name": "Picnic Mat (Large, Waterproof)",
+    "category": "outdoor",
+    "price": 15.00,
+    "min_order": 1,
+    "rating": 4.6,
+    "shipping_days": 2,
+    "stock": 50,
+    "tags": ["outdoor", "picnic", "neutral", "practical"]
+  },
+  {
+    "id": "013",
+    "name": "Disposable BBQ Grill Set",
+    "category": "outdoor",
+    "price": 18.00,
+    "min_order": 1,
+    "rating": 4.5,
+    "shipping_days": 2,
+    "stock": 40,
+    "tags": ["outdoor", "bbq", "party", "fun"]
+  },
+  {
+    "id": "014",
+    "name": "Scented Candle Gift Set (3 pack)",
+    "category": "gifts",
+    "price": 22.00,
+    "min_order": 1,
+    "rating": 4.9,
+    "shipping_days": 2,
+    "stock": 30,
+    "tags": ["gifts", "neutral", "relaxing"]
+  },
+  {
+    "id": "015",
+    "name": "Personalised Notebook Set (Pack of 5)",
+    "category": "stationery",
+    "price": 14.00,
+    "min_order": 1,
+    "rating": 4.7,
+    "shipping_days": 3,
+    "stock": 60,
+    "tags": ["gifts", "neutral", "stationery", "practical"]
+  }
+]
